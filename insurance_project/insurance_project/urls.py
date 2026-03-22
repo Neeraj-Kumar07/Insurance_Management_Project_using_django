@@ -28,7 +28,7 @@ from django.urls import path, include # Add 'include' here
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("apps.insurance.urls")), # This connects your home page
+    path("", include("apps.insurance.urls")), # This connects  home page
     path("customer/", include("apps.customer.urls")), # Connects customer features
 ]
 #========================================================================================#
