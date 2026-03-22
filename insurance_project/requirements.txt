@@ -1,8 +1,9 @@
 django==5.2.1
 gunicorn
-whitenoise[compression]
+whitenoise
 dj-database-url
 psycopg2-binary
+Pillow==10.2.0
 #==================================================================================#
 
 # from django.contrib import admin

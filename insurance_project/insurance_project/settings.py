@@ -31,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-q)y1ns$iop^z#ov+c8_(do(y03#6z(4mqzu0(5#a62et!*lo6n"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -61,9 +61,14 @@ INSTALLED_APPS = [
 # ==================================================================================================#
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware", 
-    "django.contrib.sessions.middleware.SessionMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # For static files
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware', 
+    'django.contrib.messages.middleware.MessageMiddleware',       
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     # "django.middleware.security.SecurityMiddleware",
     # "django.contrib.sessions.middleware.SessionMiddleware",
@@ -108,7 +113,7 @@ WSGI_APPLICATION = "insurance_project.wsgi.application"
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=os.environ.get('DATABASE_URL'),
         conn_max_age=600
     )
 }
