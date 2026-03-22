@@ -12,8 +12,8 @@ from datetime import date, timedelta
 from django.db.models import Q
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from customer import models as CMODEL
-from customer import forms as CFORM
+from apps.customer import models as CMODEL
+from apps.customer import forms as CFORM
 
 def home_view(request):
     if request.user.is_authenticated:
