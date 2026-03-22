@@ -8,8 +8,10 @@ from django.conf import settings
 from datetime import date, timedelta
 from django.db.models import Q
 from django.core.mail import send_mail
-from insurance import models as CMODEL
-from insurance import forms as CFORM
+# from insurance import models as CMODEL
+# from insurance import forms as CFORM
+from apps.insurance import models as CMODEL
+from apps.insurance import forms as CFORM
 from django.contrib.auth.models import User
 
 
@@ -43,13 +45,24 @@ def is_customer(user):
 
 @login_required(login_url='customerlogin')
 def customer_dashboard_view(request):
-    dict={
-        'customer':models.Customer.objects.get(user_id=request.user.id),
-        'available_policy':CMODEL.Policy.objects.all().count(),
-        'applied_policy':CMODEL.PolicyRecord.objects.all().filter(customer=models.Customer.objects.get(user_id=request.user.id)).count(),
-        'total_category':CMODEL.Category.objects.all().count(),
-        'total_question':CMODEL.Question.objects.all().filter(customer=models.Customer.objects.get(user_id=request.user.id)).count(),
+    # dict={
+    #     'customer':models.Customer.objects.get(user_id=request.user.id),
+    #     'available_policy':CMODEL.Policy.objects.all().count(),
+    #     'applied_policy':CMODEL.PolicyRecord.objects.all().filter(customer=models.Customer.objects.get(user_id=request.user.id)).count(),
+    #     'total_category':CMODEL.Category.objects.all().count(),
+    #     'total_question':CMODEL.Question.objects.all().filter(customer=models.Customer.objects.get(user_id=request.user.id)).count(),
 
+    # }
+    # return render(request,'customer/customer_dashboard.html',context=dict)
+    ust = models.Customer.objects.get(user_id=request.user.id) 
+    
+    dict={
+        'customer': cust,
+        'available_policy': CMODEL.Policy.objects.all().count(), # Correct
+        'applied_policy': CMODEL.PolicyRecord.objects.filter(customer=cust).count(), # Correct
+        'total_category': CMODEL.Category.objects.all().count(), # Correct
+        # Fix: Ensure Question model in Insurance app has a 'customer' field
+        'total_question': CMODEL.Question.objects.filter(customer=cust).count(), 
     }
     return render(request,'customer/customer_dashboard.html',context=dict)
 
