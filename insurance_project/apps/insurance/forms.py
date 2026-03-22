@@ -38,25 +38,19 @@
 #         return self.question_text
 
 from django import forms
-from .models import Category, Policy, Question
+from django.contrib.auth.models import User
+from .models import Customer
 
-class CategoryForm(forms.ModelForm):
+class CustomerUserForm(forms.ModelForm):
     class Meta:
-        model = Category
-        fields = ['name', 'description']
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'password']
+        widgets = {
+            'password': forms.PasswordInput()
+        }
 
-class PolicyForm(forms.ModelForm):
+class CustomerForm(forms.ModelForm):
     class Meta:
-        model = Policy
-        fields = ['category', 'name', 'sum_assured', 'premium', 'tenure', 'description']
-
-class QuestionForm(forms.ModelForm):
-    class Meta:
-        model = Question
-        fields = ['policy', 'question_text']
-
-class ContactusForm(forms.Form):
-    Name = forms.CharField(max_length=30)
-    Email = forms.EmailField()
-    Message = forms.CharField(max_length=500, widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
+        model = Customer
+        fields = ['address', 'mobile', 'profile_pic']
 #=====================================================================================#
