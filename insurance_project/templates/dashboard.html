@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.first_name }}!</h2>
+<p>This is your dashboard. Use the navigation bar to explore policies, view your records, or update your profile.</p>
+
+<div class="mt-4">
+    <a class="btn btn-outline-primary" href="{% url 'view-policies' %}">View Policies</a>
+    <a class="btn btn-outline-success" href="{% url 'my-records' %}">My Policies</a>
+</div>
+{% endblock %}
