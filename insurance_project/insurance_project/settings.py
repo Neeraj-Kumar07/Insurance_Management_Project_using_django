@@ -161,8 +161,9 @@ USE_TZ = True
 # MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # New line
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'insurance_project', 'static'),
+]
 
 # This line ensures the graphics are compressed and load fast
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 

@@ -25,8 +25,14 @@ class Policy(models.Model):
 class PolicyRecord(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     policy = models.ForeignKey(Policy, on_delete=models.CASCADE)
+    status = models.CharField(max_length=100, default='Pending') # ADD THIS LINE
     purchase_date = models.DateField(auto_now_add=True)
     expiry_date = models.DateField()
+# class PolicyRecord(models.Model):
+#     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+#     policy = models.ForeignKey(Policy, on_delete=models.CASCADE)
+#     purchase_date = models.DateField(auto_now_add=True)
+#     expiry_date = models.DateField()
 
     def __str__(self):
         return f"{self.customer.user.username} - {self.policy.name}"
