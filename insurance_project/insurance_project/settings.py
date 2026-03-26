@@ -183,7 +183,7 @@
 # ==========================================xxxxxx=================================
 
 import os
-import dj_database_url
+# import dj_database_url
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -193,6 +193,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'apps.customer',
+    'apps.insurance',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -201,8 +203,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.customer.apps.CustomerConfig',
     'apps.insurance.apps.InsuranceConfig',
-    'apps.customer',
-    'apps.insurance',
+    
 ]
 
 MIDDLEWARE = [
