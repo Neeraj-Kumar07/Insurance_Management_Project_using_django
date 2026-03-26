@@ -54,7 +54,7 @@ def customer_dashboard_view(request):
 
     # }
     # return render(request,'customer/customer_dashboard.html',context=dict)
-    ust = models.Customer.objects.get(user_id=request.user.id) 
+    cust = models.Customer.objects.get(user_id=request.user.id) 
     
     dict={
         'customer': cust,

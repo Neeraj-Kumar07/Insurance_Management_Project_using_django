@@ -27,23 +27,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include 
-from . import views  # Add this at the top of urls.py
+ # Add this at the top of urls.py
 # apps/insurance/urls.py
 
-
-urlpatterns = [ 
+urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.home_view, name='home'),
-    path('', include('apps.insurance.urls')),
-    path('customer/', include('apps.customer.urls')),
-    path('', views.home_view, name='home'),
-    path('aboutus', views.aboutus_view, name='aboutus'),
-    path('contactus', views.contactus_view, name='contactus'),
-    path('afterlogin', views.afterlogin_view, name='afterlogin'),
-    path('admin-dashboard', views.admin_dashboard_view, name='admin-dashboard'),
-    
-    # CHANGE THIS LINE: Remove the / from the end of the name
-    path('adminlogin', LoginView.as_view(template_name='insurance/adminlogin.html'), name='adminlogin'),
-    path('adminclick', views.adminclick_view, name='adminclick'),
+
+    # App URLs
+    path('', include('apps.customer.urls')),
+    path('insurance/', include('apps.insurance.urls')),
 ]
 #========================================================================================#
