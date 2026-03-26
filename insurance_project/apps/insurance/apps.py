@@ -4,5 +4,6 @@ from django.apps import AppConfig
 class InsuranceConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     # name = "insurance"
-    name = 'apps.insurance'
+    # name = 'apps.insurance'
+    name = 'insurance_project.apps.insurance'
 #=============================================================#

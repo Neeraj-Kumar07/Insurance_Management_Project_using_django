@@ -193,17 +193,16 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    'apps.customer',
-    'apps.insurance',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.customer.apps.CustomerConfig',
-    'apps.insurance.apps.InsuranceConfig',
-    
+
+   
+    'insurance_project.apps.customer.apps.CustomerConfig',
+    'insurance_project.apps.insurance.apps.InsuranceConfig',
 ]
 
 MIDDLEWARE = [
