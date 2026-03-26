@@ -22,13 +22,18 @@ Including another URLconf
 #     path("admin/", admin.site.urls),
     
 # ]
+# from django.contrib import admin
+# from django.urls import path, include
 
 from django.contrib import admin
-from django.urls import path, include # Add 'include' here
+from django.urls import path, include 
 
 # apps/insurance/urls.py
 
 urlpatterns = [ 
+    path('admin/', admin.site.urls),
+    path('', include('apps.insurance.urls')),
+    path('customer/', include('apps.customer.urls')),
     path('', views.home_view, name='home'),
     path('aboutus', views.aboutus_view, name='aboutus'),
     path('contactus', views.contactus_view, name='contactus'),
