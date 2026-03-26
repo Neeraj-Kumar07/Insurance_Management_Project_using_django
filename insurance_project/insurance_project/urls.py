@@ -27,11 +27,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include 
-
+from . import views  # Add this at the top of urls.py
 # apps/insurance/urls.py
+
 
 urlpatterns = [ 
     path('admin/', admin.site.urls),
+    # path('', views.home_view, name='home'),
     path('', include('apps.insurance.urls')),
     path('customer/', include('apps.customer.urls')),
     path('', views.home_view, name='home'),
